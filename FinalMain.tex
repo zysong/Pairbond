@@ -1,0 +1,245 @@
+\documentclass[12pt]{article}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{lineno}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+
+
+\begin{document}
+\linenumbers
+\doublespacing
+
+\title{The Coevolution of Long-term Pair Bonds and Cooperation}
+\author{Zhiyuan Song, Marcus W. Feldman\\
+				Department of Biology, Stanford University\\
+				Stanford, CA 94305}
+\date{\today}
+\maketitle
+Short running title: Coevolution of Pair Bonds and Cooperation 
+
+Correspondence: Zhiyuan Song, Department of Biology, 371 Serra Mall, Stanford University, Stanford, CA 94305, USA
+
+Tel: +1 650 644 7265; fax:  ; email: zysong@stanford.edu
+
+\newpage
+
+\begin{abstract}
+
+The evolution of social traits may not only depend on but also change the social structure of the population. In particular, the evolution of pairwise cooperation, such as biparental care, depends on the pair-matching distribution of the population, and the latter often emerges as a collective outcome of individual pair bonding traits, which are also under selection. Here we develop an analytical model and individual-based simulations to study the coevolution of long-term pair bonds and cooperation in parental care, where partners play a Snowdrift game in each breeding season. We illustrate that long-term pair bonds may coevolve with cooperation when bonding cost is below a threshold. As long-term pair bonds lead to assortative interactions through pair-matching dynamics, they may promote the prevalence of cooperation. In addition to the payoff matrix of a single game, the evolutionarily stable equilibrium also depends on bonding cost and accidental divorce rate, and it is determined by a form of balancing selection because the benefit from pair-bond maintenance diminishes as the frequency of cooperators increases. Our findings highlight the importance of ecological factors affecting social bonding cost and stability in understanding the coevolution of social behaviour and social structures, which may lead to the diversity of biological social systems.
+
+{\bf Keywords:} coevolution, pair bond, parental care, bonding cost, accidental divorce, pair-matching dynamics, evolutionary dynamics
+\end{abstract}
+
+\newpage
+
+\section*{Introduction}
+
+Cooperation through pair bonding is common in animals even though individuals may benefit more from desertion. For instance, social monogamous breeding pairs provide biparental care in over 80 per cent of avian species \citep{Cockburn2006}, although an apparent conflict of interest may exist when one parent benefits from early desertion by taking advantage of its partner's investment in parental care \citep{Grafen.Sibly1978, Clutton-Brock1991, Arnold2002}. While assortative matching could facilitate the maintenance of altruistic cooperation \citep{Fletcher.Doebeli2006}, the individual-based mechanism of assortment beyond kinship has often been unclear and just assumed to be a fixed condition of the population. In contrast, real animals are often able to actively change their partnerships, and hence the pair-matching distribution of a population emerges as a collective outcome of individual social bonding preferences. Furthermore, the dynamic pair-matching feeds back to the selection pressure on the bonding preferences as well as the behavioural traits. It is therefore important to understand how bonding preferences might co-evolve with cooperation. 
+
+Recognizing cooperators before any interaction may often be cognitively difficult or costly. Instead, one simple strategy that long-lived animals often use, and that may lead to assortative pair-matching, is to maintain a pair bond if both partners cooperate. This is a feasible strategy because animals are usually neither constrained by a fixed partnership nor unable to retain a mutually favoured partnership. Even in migratory species, e.g., black-tailed godwits (\textit{Limosa limosa islandica}), partners may maintain long-term pair bonds by synchronizing arrival time \citep{Gunnarsson.etal2004}. Similar dynamic patterns are also observed in primate grooming networks \citep{Smuts1985}. Partner choice is also arguably more prevalent in nature than more aggressive cooperation-enforcing strategies such as punishment \citep{Noe.Hammerstein1994}. However, the former does not always lead to stable pair bonds as a meta-analysis of birds indicated that divorce rates vary substantially among taxa and possibly even among populations of the same species \citep{Jeschke.Kokko2008}. The diversity might partly result from different bonding costs and accidental divorce rates in various ecological contexts. For instance, to maintain a stable pair bond, partners often have to stay close to each other and intimate behaviour such as mutual grooming, preening or duetting is often required \citep{Roughgarden2012}, which may reduce foraging efficiency or cause higher predation risk. For migratory species, an individual trying to reunite with its previous partner may also have to pay some opportunity cost by waiting if the partner arrives late \citep{Ens1996}. Furthermore, divorces due to accidents such as partner death and communication error are not uncommon even when both partners prefer a long-term bond. 
+
+While early theoretical models mostly focused on the evolution of social behaviour with homogeneous or static social structures regarded as fixed population characteristics \citep[e.g.,][]{Axelrod.Hamilton1981, MaynardSmith1982}, recent studies have shown that the evolution of cooperation may be greatly facilitated when individuals are able, without any cost, to freely adjust their social ties according to their experience \citep{Skyrms.Pemantle2000, Santos.etal2006a, Pacheco.etal2008, Wu.etal2010}. However, the cost of social bond maintenance may result in reduced efficiency in facilitating cooperation \citep{Masuda2007}, as may accidental divorces. Furthermore, since the benefit from maintaining a pair bond diminishes as the frequency of cooperators increases, the question arises as to whether and how the preference for maintaining long-term pair bonds as a trait could coevolve with cooperation when the cost of and error in long-term bonding are considered.
+
+In this study, we investigate the co-evolution of long-term pair bonds and cooperation in parental care, where individuals form pairs to reproduce in each breeding season. An individual's behavioural trait determines whether to provide care in the context of a Snowdrift game \citep{Hauert.Doebeli2004}, and its pair bonding trait determines whether to maintain a long-term pair bond if biparental care is provided, leading to a dynamic pair-matching distribution. We first construct an analytical haploid model integrating pair-matching-dynamics and evolutionary dynamics. We find that, when bonding cost is below a non-trivial threshold, preference for long-term pair bonds may evolve and boost the prevalence of parental care; long-term pair bonds do not evolve otherwise. The evolutionary equilibrium also depends on the accidental divorce rate. To apply the result of the analytical model to cases with realistic genetic structures, we then run individual-based simulations of a diploid two-locus model without heterozygote advantage, and the results agree well with the analytical prediction. Our study suggests that ecological factors affecting social bonding cost and stability may be important to understand the evolution of diverse biological social systems.
+
+
+\section*{Analytical model}
+\label{sec:model}
+
+We consider a large population where individuals form mating pairs and reproduce in each breeding season. The survival probability of offspring increases with the total amount of care they receive from both parents. Either parent may provide care to the brood, or alternatively, it may desert the brood to seek remating opportunities. There is a clear tradeoff between the two behavioural options. We assume that the parental behaviour is controlled by a biallelic locus. Furthermore, if both parents provide care (cooperate), they may retain their pair bond for the next breeding seasons, if both choose to do so. We assume that the pair-bonding propensity is controlled by another biallelic locus. A pattern of assortative pair-matching may thus emerge as bonded pairs tend to spend longer time together. Only carers may maintain pair bonds because the individual that deserts its offspring also has to desert its partner and is thus unable to maintain a pair bond. Apparently, any preference to reunite with a known deserter would also be selected against. This is consistent with empirical observations that a deserted individual rarely reunites with its previous partner \citep{Ens1996}.
+
+The model is structured with three components: (1) Within a breeding season, an individual's fitness payoff is determined by its own investment in parental care as well as its partner's investment. (2) Across breeding seasons, the pair-matching distribution changes dynamically as individuals may maintain or switch partnership. (3) Natural selection favours the phenotypes that lead to higher average fitness, which is jointly determined by the payoff matrix and the pair-matching distribution. The pair-matching dynamics and the evolutionary dynamics operate simultaneously and provide feedbacks to each other.
+
+\subsection*{Phenotypes and payoffs}
+
+Regardless of the genetic structure and the total number of genotypes, there are at most three different phenotypes in the population: T1 deserts the brood and forms no pair bond; T2 provides care but does not maintain a pair bond after a breeding season; T3 provides care and tries to maintain a pair bond if the partner also provides care. For analytical tractability, we assume that an offspring randomly inherits the bonding type of one of its parents, which is equivalent to asexual reproduction. For simplicity, the time and energy budgets in a breeding season are assumed to be identical for all individuals.
+
+The fitness of each individual depends on its breeding success. Providing parental care increases breeding success in the current brood but excludes remating opportunities. In accordance with the common 2-by-2 game payoff matrices \citep{Santos.etal2006a}, we denote by $u_{ij}$ the fitness payoff to phenotype T$i$ matching with T$j$ (Table 1) in a single breeding season. A pair of carers (T2/T3) cooperatively provide biparental care and each obtains fitness $R$. The cooperation in biparental care may be achieved by reciprocal negotiation through repeated interactions \citep{Akcay.etal2009}. If two deserters (T1) pair up, both desert and the fitness payoff of each is $P$. If only one provides care, it receives fitness $S$, while the deserter receives $T$. In particular, we are interested in the scenario with $P<S<R<T$, where biparental care works better than uniparental care for the offspring, and a deserter receives the highest payoff if its partner provides uniparental care but does worst if its partner also deserts. This scenario describes a possible state of early birds when parental care is beneficial to the offspring but biparental care is not indispensable \citep{Ligon1999}. A game with this type of payoff matrix is sometimes termed a Snowdrift game \citep{Santos.etal2006a}.
+
+Furthermore, a pair may try to maintain their pair bond after a breeding season, but pair-bond maintenance is imperfect due to accidents such as partner death and communication error. Denote by $q_{ij}$ the divorce rate of a T$i$-T$j$ pair and by $m$ the mortality rate. Thus, $q_{33}=q$, where $q \geq 1-(1-m)^2$ is the accidental divorce rate, and $q_{ij}=1$ otherwise. Denote by $c$ the net cost of maintaining a pair bond relative to the cost of forming a new one and define it as the bonding cost. Note that $c$ is negative when maintaining a pair bond costs less than seeking a new partner, which could be true if a pair can cooperatively defend their territory in the non-breeding season, or when the population density is so low that it takes time to seek a new mate. The average fitness payoff to T$i$ in a T$i$-T$j$ pair in a full breeding cycle (a breeding season and a non-breeding season) is thus $w_{ij} = u_{ij}-(1-q_{ij})c$. 
+
+\subsection*{Pair-matching dynamics}
+
+Given the payoff matrix of a breeding pair, the average fitness of any phenotype depends on the pair-matching distribution of the population. All unpaired individuals, including juveniles and adults that ended their previous partnerships, seek partners at the beginning of each breeding season. We assume that there is no reliable cue for individuals to distinguish each others' parental and bonding types if they have never paired before, and thus the pair-matching in a large unpaired pool is approximately random, while the others maintain their previous pair bonds. With selection controlled (e.g., at an evolutionary equilibrium), the probability distribution of the pair-matching of the population depends only on the matching in the previous breeding season. Hence, we can study the pair-matching dynamics as a Markov process regardless of the total number of phenotypes/genotypes in the population.
+
+As a simple example, here we only track the phenotype matching dynamics. In the supplementary material (S1), we generalize the model to M types where any given number ($M$) of genotypes are tracked.
+
+Denote by $x_i$ the frequency of T$i$ in the population ($i=1,2,3$) with $x_1 + x_2 + x_3=1$. Any focal individual can switch between different pairing states. Denote by $s_i(t)$ the fraction of unpaired T$i$ in the whole population at the beginning of the $t$-th breeding season. We use the matrix $\mathbf{\Pi} (t)$ to describe the pair-matching distribution at time $t$; the entry $\pi_{ij}(t)$ denotes the frequency of T$j$ among T$i$'s partners, with $\mathbf{\pi}_i(t) = \left( \pi_{i1}(t), \pi_{i2}(t), \pi_{i 3}(t)\right)^T$, where $^T$ indicates the transpose. Obviously, $\pi_{i1}(t)+ \pi_{i2}(t)+ \pi_{i 3}(t)=1$ for $i=1, 2, 3$. 
+
+Birth and death only change the frequencies in the unpaired pool because deaths lead to divorces and juveniles are all unpaired in their first breeding season. Note that the unpaired pool does not change if a divorced adult dies and is replaced by a juvenile of the same type, so that the absolute birth and death rates do not matter given the accidental divorce rate. The unpaired frequency in the next breeding season can be computed as
+\begin{equation}
+s_i(t+1) = x_i(t)({\pi_{i1}(t) + \pi_{i2}(t) + q_{i3} \pi_{i3}(t)})+\Delta x_i(t+1),
+\label{eqn:si}
+\end{equation}
+where $\Delta x_i (t+1) = x_i(t+1)-x_i(t)$ represents the frequency change of T$i$ in the whole population due to birth and death. 
+
+The probability of a pair-matching transition from $\mathbf{\pi}_i(t)$ to $\mathbf{\pi}_i(t+1)$ is summarized by the transition matrix $\mathbf{A_i}(t)$. The non-negative entry 
+\begin{equation}
+(\mathbf{A_i})_{jk}(t)=\tfrac{q_{ij} s_k(t)}{s_1(t)+s_2(t)+s_3(t)}+1-q_{ij}
+\end{equation}
+represents a T$i$ individual's transition probability from pairing with T$j$ to pairing with T$k$. Thus the pair-matching distribution is updated as 
+\begin{equation}
+\mathbf{\pi}_i(t+1) = \mathbf{A_i}(t+1) \mathbf{\pi}_{i}(t).
+\label{eqn:transition}
+\end{equation}
+
+
+\subsection*{Evolutionary dynamics}
+
+The phenotype frequencies in the population may change as birth and death occur if phenotypes' fitnesses differ. The mean payoff $w_i$ to T$i$ in the population is weighted by the pair-matching distribution, $w_i (t) = \sum_{j=1}^3 w_{ij} \pi_{ij}(t)$, and the mean payoff $\bar{w}$ of the whole population is weighted by the phenotype frequencies, $\bar{w}(t) = \sum_{i=1}^3 x_i(t) w_i(t)$. The relative frequency of T$i$ among juveniles is thus $w_i(t)/\bar{w}(t)$.
+
+Adults randomly die after a breeding season at rate $m$ and are replaced by juveniles that are randomly chosen in proportion to their relative frequencies. Assuming a fixed-sized population, the recursion for $\mathbf{x}(t)$ is given by 
+\begin{equation}
+x_i (t+1) = x_i(t) + m (\frac{w_i (t)} {\bar{w}(t)}-1) x_i(t).
+\label{eqn:replicator}
+\end{equation}
+The result of selection feeds back to the pair-matching dynamics in equation \eqref{eqn:si} as it changes the phenotype frequencies in the unpaired pool.
+
+\section*{Results}
+\subsection*{Pair-matching dynamics}
+
+Here we fix the population at an assumed evolutionary equilibrium $\mathbf{x}^*=(x_1^*, x_2^*, x_3^*)$, where $\Delta x_i(t) = 0$ for any $i$. We can see from equation (\ref{eqn:si}) that 
+\begin{align*}
+\Delta s_i(t+1) &= s_i(t+1)-s_i(t) \\
+			    &= x_i^* (\Delta \pi_{i1}(t) + \Delta \pi_{i2}(t) + q_{i3} \Delta \pi_{i3}(t)) .
+\end{align*}
+
+Thus, when $\Delta \pi_{ij}(t) \rightarrow 0$ for any $j$, we have $\Delta s_i(t+1) \rightarrow 0$. From equation \eqref{eqn:transition} we can find the stationary pair-matching distribution, designated by the matrix $\mathbf{\Pi}^*$, given $s^*$. By the definition of stationary distribution, we have $\mathbf{A}_i^* \mathbf{\pi}_i^* = \mathbf{\pi}_i^*$. Thus, $\mathbf{\pi}_i^*$ is the right eigenvector of $\mathbf{A}_i^*$ corresponding to the eigenvalue 1, and we obtain $\pi_{ij}^*$ as a function of $s^*$:
+\begin{equation}
+\pi_{ij}^*=\frac{s_{j}^*/q_{ij}} {s_1^*+s_2^*+s_3^*/q_{i3}}.
+\label{eqn:StationaryDist}
+\end{equation}
+
+Substituting equation (\ref{eqn:StationaryDist}) into equation (\ref{eqn:si}), we can derive $s_i^*$ as a function of $\mathbf{x}^*$: 
+
+$s_1^*=x^*_1$, $s_2^*=x^*_2$, and $s_3^*=\left[q(2 x^*_3 -1) + \sqrt{q-q(1-q)(2 x^*_3 -1)^2}\right]/2$. 
+
+Then we can obtain the stationary pair-matching distribution $\mathbf{\Pi}^*$ as a function of $\mathbf{x}^*$ from equation \eqref{eqn:StationaryDist}.
+
+\subsection*{Evolutionary dynamics}
+
+Fix the population with a stationary pair-matching distribution $\mathbf{\Pi}^*(\mathbf{x})$. The three phenotypes can coexist at an equilibrium only if $w^*_1=w^*_2=w^*_3=\bar{w}^*$. By substituting equation \ref{eqn:StationaryDist}, we derive the necessary condition as a threshold of the bonding cost
+\begin{equation}
+c^*=\frac{(T-R)(R-S)}{T-R+S-P}, 
+\label{eqn:cthreshold}
+\end{equation}
+which is independent of $q$. This condition is insufficient because $x^*_2$ or $x^*_3$ may be 0. Given $c=c^*$, we obtain two separate positive continuous sets of $\mathbf{x}^*$, of which the one satisfying $\tfrac{x^*_1}{x^*_2} > \tfrac{T-R}{S-P}$ is stable and the other not. The stable set of equilibria is an evolutionarily stable (ES) set \citep{Thomas1985}, as these equilibria are evolutionarily neutral to each other and ES against all the states outside the set (Fig. \ref{fig:coexisteqm}a). The details of the calculation are presented in the supplementary material (S2).
+
+The coexistence of all three types at any stable equilibrium is, however, non-generic as the condition (equation \eqref{eqn:cthreshold}) is a single point and is not robust to perturbations of the payoffs. A minimum perturbation causes the ES set to shrink to a single point on the edges: The point $\mathbf{x}=(\tfrac{T-R}{T-R+S-P}, \tfrac{S-P}{T-R+S-P},0)$ on the edge between T1 and T2 is the only ES equilibrium if $c>c^*$ (Fig. \ref{fig:coexisteqm}b); the equilibrium on the edge between T1 and T3 is the unique ES equilibrium if $c<c^*$ (Fig. \ref{fig:coexisteqm}c), and is a function of $q$ and $c$ that can be solved numerically. The stability of each equilibrium is examined by computing the Jacobian matrix of equation \eqref{eqn:replicator} at the equilibrium. A sufficient condition for a stable equilibrium is that the absolute values of all the eigenvalues of the Jacobian matrix are less than 1. With the presence of T3, the frequency of carers at the equilibrium increases as $c$ and $q$ decrease (Fig. \ref{fig:contour}a), and so does the frequency of biparental care (Fig. \ref{fig:contour}b). The latter changes even more dramatically as the chance that two carers pair up is greater than random matching. In particular, the positive threshold $c^*$ indicates that long-term pair bonds can evolve even if maintaining a pair bond is more costly than randomly seeking a new partner. Whenever long-term pair bonds evolve, the frequency of carers at the equilibrium exceeds that without pair bonds.
+
+To generalize the result, any carers that try to maintain long-term pair bonds with a moderate probability can be considered as using a mixed strategy of T2 and T3. Such a bonding type can invade by neutral drift only if $c=c^*$, as it is dominated by either T2 or T3 when $c \neq c^*$. The monomorphic equilibrium $(0, 0, 1)$ is globally stable if T3 is dominant against T1 and T2, i.e., if $c \leq \tfrac{T-R}{q-1} <0$. This result suggests that deserters can be completely eliminated only if maintaining a long-term pair bond also brings sufficient direct benefit, e.g., by cooperative hunting or defending, or if seeking a new mate is difficult. The generic result that different bonding traits do not coexist at an ES state suggests that the threshold $c^*$ might also be the dividing point in a diploid model.
+
+\subsection*{Individual-based simulation}
+
+To apply the analytical prediction to populations with more realistic and complicated genetic structures, we constructed an individual-based model with diploid inheritance of two biallelic autosomal loci, one for parental care and the the other for pair bonding. We assume Mendelian inheritance and free recombination between the two loci (the recombination rate is 0.5), with alleles $A$ and $B$ dominant to $a$ and $b$, respectively. Any individual with at least one $A$ allele provides care, and individuals with at least one $A$ allele and one $B$ allele (i.e., $AABB$, $AaBB$, $AABb$ or $AaBb$) may maintain long-term pair bonds (Table \ref{tab:geno-pheno}). See the supplementary material for the details of the simulation (S3).
+
+The results of simulations based on the diploid model are in good agreement with the analytical model (Fig. \ref{fig:Simulation}). The frequency of allele $b$ in the population vanishes by the end of all runs when $c<c^*$; the frequency of allele $B$ in the population vanishes by the end of all runs when $c>c^*$. In contrast, no consistent convergence is observed in the 100 runs when $c=c^*$. For example, the analytically predicted frequency of T1 is $0.1809$ given $c=0.2$ and $q=0.2$, and the average frequency of T1 over the last 1000 steps across the 100 runs is $0.1798 \pm 0.0012$. The effect size (z-score) is $-0.9965$.
+
+The agreement between the individual-based simulation and the analytical model is not surprising despite the more complicated genetic structure included in the simulation model. This is because one allele is assumed to be dominant at each locus in the diploid model so that heterozygote advantage is excluded, and the analytical model shows that the phenotypes T2 and T3 generically do not share the same fitness. 
+
+\section*{Discussion}
+
+We have shown with both our analytical models and individual-based simulations that long-term pair bonds may coevolve with cooperation if the bonding cost is below a positive threshold; otherwise long-term pair bonds can not evolve. The stable equilibrium is determined by balancing selection because the benefit from pair-bond maintenance diminishes as the frequency of carers increases while the bonding cost remains constant. This condition is not unrealistic for many species as the bonding cost is counted relative to the cost of seeking a new partner. In our model, this threshold is independent of the accidental divorce rate $q$ because an individual that accidentally loses its partner avoids the bonding cost. Therefore, only the cost imposed on those that successfully maintain their pair bonds makes the difference. Alternatively, if all the individuals in strongly bonded pairs pay the cost whether or not they actually maintain their pair bonds, the threshold is reduced to $(1-q) c^*$,  which is dependent on $q$. But this alternative assumption does not change the qualitative result of our model. The result implies that, given a sufficiently low bonding cost, a mutant type with a higher probability of maintaining a pair bond can always invade the population. Furthermore, a stronger preference for long-term pair bond can evolve through accumulation of weak-effect mutations, if the preference is controlled by a multiallelic locus with additive genetic effects. 
+
+Empirical studies show that modes of parental care and the strength of pair bonds may vary greatly both among and within species \citep{Emlen.Oring1977, Clutton-Brock1991}. This diversity may result from the diverse evolutionary and ecological contexts, in particular, the parental dependency of offspring \citep{Thomas.etal2006}, which determines the payoff matrices of the social interaction. In this paper, we focus on the context of a Snowdrift game, where parental dependency is not too high and biparental care is not indispensable. Alternatively, for many migratory passerine species, e.g., house martins (\textit{Delichon urbica}), the offspring are altricial and food for them is difficult to collect. In this case, biparental care is crucial for breeding success, and there is no benefit from desertion except in the case of accidental partner loss. This case refers to $R>T>P>S$ in the payoff matrix for our model (Table \ref{tab:Payoff}), which is termed a Stag Hunt game \citep{Santos.etal2006a}. Theoretical studies have indicated that the system is bistable when partners play Stag Hunt games, depending on the initial fraction of cooperators in the population, and long-term social bonds and cooperation may coevolve from a population with a sufficient fraction of cooperators \citep{Skyrms.Pemantle2000, Skyrms2004}. Once the fraction of cooperator grows sufficiently large, cooperators will keep increasing even with random matching. Therefore, long-term pair bonds may vanish while cooperation prevails at the stable equilibrium, if adult mortality is high so that the opportunity cost of waiting for a partner is high, coinciding with the observed frequent partner switching in short-living biparental species. In addition, if age and other physical conditions are substantial contributors to breeding capacity, an individual's decision in a breeding game may also be subject to its own and the partner's condition (e.g., health and age), which may lead to greater behavioural variation \citep{McNamara.etal1999, Dijk.etal2011}. All of these ecological factors need to be taken into consideration when our prediction is tested with empirical case studies. 
+
+However, instead of considering different games as independent contexts, it might be more reasonable to consider parental dependency as one evolvable trait \citep{Thomas.etal2006, Gardner.Smiseth2011}, so that the payoff matrices may coevolve with breeding systems. If low parental dependency was the ancestral trait, as suggested by phylogenetic studies \citep{Ligon1999, Bennett.Owens2002}, the initial payoff matrices would be like those of Snowdrift games, and the evolution of stable pair bonds might facilitate the prevalence of biparental care, as shown in our study, creating conditions for subsequent evolution of greater parental dependency from precociality to altriciality. As a result, an evolutionary transition of the payoff matrices from Snowdrift games to Stag Hunt games is possible. We are working on a separate paper to investigate how this type of transition may occur.
+
+Cooperation may be facilitated by assortative interactions \citep{Fletcher.Doebeli2006}, but assortment is often not a pre-set fixed condition. Instead, the pair-matching distribution often emerges as a collective outcome of evolving individual preferences. Hence, our approach may help to explain social interactions among individuals whose movements are not constrained by the spacial scale of natal groups. For instance, sexual reproduction, one of the most common social interactions, often selects against mating with close kin to avoid genetic inbreeding, and partner choice is often involved. For these cases, stable partnerships are probably formed based on individual bonding preferences, and our model provides an example that indicates how ecological factors such as bonding cost and accidental divorce rate may determine the evolutionary fate of a social system. Pair-bond maintenance may also be considered as a special case of social niche construction \citep{Odling-Smee.etal2003, Ihara2004} as an individual may change its future fitness by actively manipulating its social environment, not only its own partnership but also the phenotype distribution in the unpaired pool.
+
+Some theoretical work has been done on the coevolution of cooperation and social structures \citep{Perc.Szolnoki2010}. For instance, cooperation and partner choosiness may coevolve in the context of a continuous Snowdrift game \citep{McNamara.etal2008}, where both traits are continuous and there is a direct benefit to maintaining a pair bond. They considered mortality as the only cause of accidental divorces and analyzed the effect of mortality. However, it is impossible to tell the contribution of accidental divorce from that of mutations, because mortality also contributes to the frequency of mutations. Another study showed that cooperation and preference for small group size could coevolve when group size regulation is free, also in the context of a Snowdrift game \citep{Powers.etal2011}. None of the previous studies investigated the impact of the cost of pair bond/group maintenance, while this cost could possibly be a key ecological factor that leads to the diversity of social systems, e.g., the various avian breeding systems. Not surprisingly, a simulation-based study showed that bonding costs matter in facilitating the evolution of cooperation in randomly generated scale-free networks  \citep{Masuda2007}. By controlling all the other parameters, our study illustrates that how bonding cost and accidental divorce rate may jointly shape the coevolution of cooperation and pair bonds. 
+
+Using the example of a breeding system with parental care, we have shown that cooperation and long-term pair bonds may coevolve if the bonding cost is bounded with a threshold, as the pair-matching distribution emerging out of individual pair bonding preferences boosts cooperation. A selection balance results from the diminishing benefit from pair bond maintenance as carers increase. The ES equilibrium depends on bonding cost and accidental divorce rate. Furthermore, our study reveals the potentially critical role of the interaction between evolutionary and pair-matching dynamics in driving the diversity of social behaviour. To better understand the evolution of diverse biological social systems, comparative studies should take into account the ecological factors, e.g., bonding cost and accidental divorce rate, that may mediate social structure and evolutionary dynamics.
+
+\section*{Acknowledgements}
+
+We thank Joan Roughgarden for valuable comments. This research was supported in part by NIH grant GM28016. Z.S. is supported by Donald Kennedy Fellowship and the Department of Biology, Stanford University.
+
+\bibliographystyle{jebnat}
+\bibliography{coop}
+
+\clearpage
+\begin{table*}
+		\centering
+		\caption{The fitness payoff to the role player within a breeding season. Its partner is the column player. The matrix is symmetric.}
+		\begin{tabular}[htb]{ccc} \hline
+		  & T1 & T2/T3 \\ \hline
+		T1 & $P$ & $T$ \\
+		T2/T3 & $S$ & $R$ \\
+		\hline
+		\end{tabular}
+		\label{tab:Payoff}
+\end{table*}
+
+\clearpage
+\begin{table*}
+		\centering
+		\caption{Variables and parameters}
+		\begin{tabular}[htb]{ll} \hline
+		Symbols	& Description \\ \hline
+		$A_i$		& The matching transition matrix from $\mathbf{\pi}_i(t)$ to $\mathbf{\pi}_i(t+1)$\\
+		$c$			& The bonding cost \\
+		$m$			& The mortality \\		
+		$\pi_{ij}$  & The frequency of T$j$ among T$i$'s partners\\
+		$q$			& The accidental divorce rate of a T3-T3 pair\\
+		$q_{ij}$	& The probability of a T$i$-T$j$ divorce\\
+		$s_i$		& The frequency of unpaired T$i$ at the beginning of a breeding season\\
+		$u_{ij}$	& The fitness payoff of a T$i$ pairing with T$j$ within a breeding season \\
+		$w_{ij}$	& The fitness payoff of a T$i$ pairing with T$j$ per breeding cycle \\
+		$w_{i}$		& The average fitness payoff of T$i$ per breeding cycle\\
+		$\bar{w}$	& The average fitness payoff over the population per breeding cycle\\
+		$x_i$		& The frequency of T$i$ in the population\\
+		\hline
+		\end{tabular}
+		\label{tab:VariablesAndParameters}
+\end{table*}
+
+\clearpage
+\begin{table*}
+		\centering
+		\caption{The phenotype of an individual is determined by its genotype on the two loci (Row: locus 1; column: locus 2).}
+		\begin{tabular}[htb]{cccc} \hline
+		  & BB & Bb & bb \\ \hline
+		AA & T3 & T3 & T2 \\
+		Aa & T3 & T3 & T2 \\
+		aa & T1 & T1 & T1 \\
+		\hline
+		\end{tabular}
+		\label{tab:geno-pheno}
+\end{table*}
+
+
+\clearpage
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{Fig1.eps}
+  \caption{Evolutionary dynamics in a population of three phenotypes. (a) All the points in an ES set are evolutionarily neutral against each other and any trajectory starting from any point outside the set converges to a point in the set when $c=c^*=0.5$. (b) The point $(\frac{T-R}{T-R+S-P},\frac{S-P}{T-R+S-P},0)$ on the edge between T1 and T2 is the only stable equilibrium if $c>c^*$ (Here $c=0.8$). (c) The equilibrium on the edge between T1 and T3 is the only stable equilibrium if $c<c^*$ (Here $c=0.2$). The trajectories are the results of deterministic simulations with parameters: $R=4$, $S=3$, $T=5$, $P=2$ and $q=0.2$.}
+  \label{fig:coexisteqm}
+\end{figure}
+
+\clearpage
+\begin{figure}
+\centering
+	\includegraphics[width=\textwidth]{Fig2.eps}
+	\caption{The frequency of (a) carers with preference for long-term pair bonds (T3) and (b) biparental care at the ES state given $c<c^*$. Both the frequency of T3 and the frequency of biparental care increase as the bonding cost $c$ and accidental divorce rate $q$ decrease, and the frequency of biparental care changes more dramatically as it responds not only to selection but also to the pair-matching dynamics. The contours for the same frequencies are also shown. The other parameters are given as in Fig. \ref{fig:coexisteqm}. Note that when long-term pair bonds are not allowed to evolve, the frequency of carers at the stable equilibrium is $0.5$, and the frequency of biparental care is $0.25$.}
+	\label{fig:contour}
+\end{figure}
+
+\clearpage
+\begin{figure}
+\centering
+	\includegraphics[width=0.45\textwidth]{fig3a.eps}
+	\includegraphics[width=0.45\textwidth]{fig3b.eps}
+\caption{Evolution of different diploid genotypes in individual-based simulations (a) with low bonding cost ($c=0.2$) and (b) with high bonding cost ($c=0.8$). The initial population consists 9 genotypes at the Hardy-Weinberg equilibrium with equal gene frequencies of all alleles ($f_A=f_a=f_B=f_b=0.5$). The plots show only the genotypes that are not eliminated by the end of simulations. Each curve shows the average of 100 independent simulation runs. The dashed line indicates the analytically predicted frequency of deserters at equilibrium. The population size is fixed at 1000. Accidental divorce rate is set at $q=0.2$ and the mortality rate is $m=0.1$. Mutation rate is $\mu=0.00001$. The other parameters are the same as in Fig. \ref{fig:coexisteqm}.}
+\label{fig:Simulation}
+\end{figure}
+
+
+\end{document}
